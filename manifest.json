@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "React New Tab Extension",
+  "version": "1.0",
+  "description": "A custom new tab page built with React, Tailwind, and TypeScript.",
+  "author": "Your Name",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": []
+}
