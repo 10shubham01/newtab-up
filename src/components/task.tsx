@@ -1,13 +1,23 @@
 import { Draggable } from "react-beautiful-dnd";
+import AvatarCircles from "./ui/avatar-circles";
+import { Ellipsis } from "lucide-react";
 
-export function Task({
+export default function Task({
   id,
   index,
-  children,
+  name,
+  onClick,
+  description,
+  title,
+  assignees,
 }: {
   id: string;
   index: number;
-  children: React.ReactNode;
+  name: string;
+  description: string;
+  title: string;
+  assignees: string[];
+  onClick: () => void;
 }) {
   return (
     <Draggable draggableId={id} index={index} key={id}>
@@ -16,11 +26,22 @@ export function Task({
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          className={`w-72 h-40  rounded-lg p-4 my-2 text-center bg-white ${
+          onClick={onClick}
+          className={`w-72 h-40 rounded-lg p-4 my-2 bg-white flex flex-col justify-between ${
             snapshot.isDragging ? "border-none" : "border-2"
           }`}
         >
-          {children}
+          <div>
+            <div className="text-2xl flex justify-between items-start">
+              {title || name}
+              <Ellipsis />
+            </div>
+            <p className="line-clamp-2">{description}</p>
+          </div>
+
+          <div className="self-end">
+            <AvatarCircles avatars={assignees} />
+          </div>
         </div>
       )}
     </Draggable>

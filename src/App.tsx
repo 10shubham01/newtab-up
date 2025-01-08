@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { Navbar } from "@/components/navbar";
-import { List } from "@/components/list";
-import { Task } from "@/components/task";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import List from "@/components/list";
+import Sidenav from "./components/sidenav";
 
 export default function App() {
   type Task = {
     name: string;
     listId: string;
-    decription: string;
+    description: string;
     title: string;
     assignees: string[];
     id: string;
@@ -19,8 +18,8 @@ export default function App() {
     id: string;
     tasks: Task[];
   };
-  const [listDropdownItem, setListDropdownItem] = useState<string[]>([]);
 
+  const [listDropdownItem, setListDropdownItem] = useState<string[]>([]);
   const [lists, setLists] = useState<ListType[]>([
     {
       name: "Todo",
@@ -30,9 +29,10 @@ export default function App() {
           name: "First task",
           listId: "to_do",
           id: "todo_task",
-          decription: "anything",
-          title: "title",
-          assignees: ["Shubham"],
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facilis perspiciatis saepe doloremque error, maiores autem laborum eveniet provident non aperiam repudiandae, vel consequatur commodi quae similique? Sed, eaque labore.",
+          title: "Hello",
+          assignees: ["Shubham", "mrinal", "Archit"],
         },
       ],
     },
@@ -44,15 +44,7 @@ export default function App() {
           name: "last task",
           listId: "in_progress",
           id: "first_task",
-          decription: "anything",
-          title: "title",
-          assignees: ["Shubham"],
-        },
-        {
-          name: "new task",
-          listId: "in_progress",
-          id: "new_task",
-          decription: "anything",
+          description: "anything",
           title: "title",
           assignees: ["Shubham"],
         },
@@ -60,8 +52,11 @@ export default function App() {
     },
   ]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+
   useEffect(() => {
-    setListDropdownItem(lists.map((list) => list.name));
+    setListDropdownItem(lists.map((list) => list.id));
   }, [lists]);
 
   function handleDragEnd(result: DropResult) {
@@ -96,11 +91,20 @@ export default function App() {
     );
   }
 
+  const handleAddTask = (newTask: Task) => {
+    console.log(newTask);
+
+    setLists((prevLists) =>
+      prevLists.map((list) =>
+        list.id === newTask.listId
+          ? { ...list, tasks: [...list.tasks, newTask] }
+          : list
+      )
+    );
+  };
   return (
-    <div className="h-dvh w-full flex flex-col justify-between bg-gradient-to-bl from-gray-50 to-gray-200 via-gray-50">
-      <div>
-        <Navbar />
-      </div>
+    <div className="h-dvh w-full flex  bg-gradient-to-bl from-gray-50 to-gray-200 via-gray-50">
+      <Sidenav></Sidenav>
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="size-full flex gap-x-2 overflow-x-scroll p-10">
           {lists.map((list) => (
@@ -108,14 +112,11 @@ export default function App() {
               key={list.id}
               id={list.id}
               name={list.name}
+              tasks={list.tasks}
               listDropdown={listDropdownItem}
-            >
-              {list.tasks.map((task, index) => (
-                <Task key={task.id} id={task.id} index={index}>
-                  {task.name}
-                </Task>
-              ))}
-            </List>
+              onTaskClick={setSelectedTask}
+              onAddOrUpdateTask={handleAddTask}
+            />
           ))}
         </div>
       </DragDropContext>
