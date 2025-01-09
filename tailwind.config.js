@@ -1,3 +1,21 @@
+const colors = [
+  "rose-500",
+  "orange-500",
+  "cyan-500",
+  "blue-500",
+  "emerald-500",
+  "fuchsia-500",
+  "green-500",
+  "amber-500",
+  "yellow-500",
+  "pink-500",
+  "lime-500",
+  "teal-500",
+  "red-500",
+  "purple-500",
+  "sky-500",
+];
+
 export default {
     darkMode: ["class"],
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -51,6 +69,11 @@ export default {
   			}
   		}
   	}
-  },
+	},
+safelist: [
+  ...colors.map(color => `text-${color}`),
+  ...colors.map(color => `bg-${color}`),
+  ...colors.map(color => `border-${color}`),
+],
   plugins: [require("tailwindcss-animate")],
 };
