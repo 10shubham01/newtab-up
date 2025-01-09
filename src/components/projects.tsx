@@ -2,9 +2,9 @@ import { File, Folder, Tree } from "@/components/ui/file-tree";
 
 export function FileTree() {
   return (
-    <div className="relative flex h-full w-80 flex-col items-center overflow-hidden rounded-lg">
+    <div className="relative flex h-full w-60 flex-col items-center overflow-hidden">
       <Tree
-        className="overflow-hidden rounded-md bg-background p-2"
+        className="overflow-hidden bg-background p-2 shadow-md"
         initialSelectedId="7"
         initialExpandedItems={[
           "1",

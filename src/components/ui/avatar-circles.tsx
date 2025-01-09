@@ -1,7 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-
+import { cn, rc } from "@/lib/utils";
 interface AvatarCirclesProps {
   className?: string;
   numPeople?: number;
@@ -14,10 +13,18 @@ const AvatarCircles = ({
   avatars,
 }: AvatarCirclesProps) => {
   return (
-    <div className={cn("z-10 flex -space-x-2 rtl:space-x-reverse", className)}>
+    <div
+      className={cn(
+        "z-10 flex -space-x-2 hover:space-x-0 rtl:space-x-reverse transition-all",
+        className
+      )}
+    >
       {avatars.map((avatar, index) => (
         <div
-          className="flex h-6 w-6 items-center justify-center text-center rounded-full border-2 border-black bg-gray-50 text-uppercase text-2xl"
+          className={`flex h-6 w-6 items-center justify-center text-center rounded-full border-2 border-black  text-uppercase text-2xl ${rc(
+            "bg",
+            avatar.charAt(0)
+          )}`}
           key={index}
         >
           {avatar.charAt(0)}

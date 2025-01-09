@@ -8,6 +8,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { rc } from "@/lib/utils";
 
 export function Dropdown({
   items,
@@ -28,12 +29,20 @@ export function Dropdown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="text-2xl">#{position}</Button>
+        <Button
+          size="sm"
+          className={`${rc("bg", position.charAt(0))} hover:${rc(
+            "bg",
+            position.charAt(0)
+          )}/80  text-2xl`}
+        >
+          #{position}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuRadioGroup
           value={position}
-          onValueChange={handleValueChange} // Handle changes
+          onValueChange={handleValueChange}
         >
           {items?.map((item) => (
             <DropdownMenuRadioItem key={item} value={item}>

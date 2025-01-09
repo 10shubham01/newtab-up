@@ -2,20 +2,21 @@ import { Droppable } from "react-beautiful-dnd";
 import AddTask from "@/components/addtask";
 import Task from "@/components/task";
 import { Task as TaskType } from "@/types";
+import { rc } from "@/lib/utils";
 
 export default function List({
   id,
   name,
   tasks,
   listDropdown,
-  onTaskClick,
+  // onTaskClick,
   onAddOrUpdateTask,
 }: {
   id: string;
   name: string;
   tasks: TaskType[];
   listDropdown: string[];
-  onTaskClick: (task: TaskType) => void;
+  onTaskClick?: (task: TaskType) => void;
   onAddOrUpdateTask: (task: TaskType) => void;
 }) {
   return (
@@ -24,14 +25,14 @@ export default function List({
         <div
           ref={provided.innerRef}
           {...provided.droppableProps}
-          className={`w-80 h-fit border-dashed border-2 rounded-lg flex flex-col items-center pb-4 ${
+          className={`min-w-80 h-fit border-dashed border-black border-2 rounded-lg flex flex-col items-center pb-4 ${
             snapshot.isDraggingOver ? "bg-gray-100" : "bg-transparent"
           }`}
         >
           <div className="w-full flex items-center p-4 justify-between">
-            <span className="text-sm text-gray-500">
+            <h1 className={`text-lg text-gray-800 ${rc("bg", name.charAt(0))}`}>
               {name + ` (${tasks.length})`}
-            </span>
+            </h1>
             <AddTask
               listDropdown={listDropdown}
               listId={id}
@@ -47,7 +48,7 @@ export default function List({
               title={task.title}
               description={task.description}
               assignees={task.assignees}
-              onClick={() => onTaskClick(task)}
+              // onClick={() => onTaskClick(task)}
             />
           ))}
           {provided.placeholder}

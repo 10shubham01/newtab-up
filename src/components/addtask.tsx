@@ -12,6 +12,7 @@ import {
 import { Dropdown } from "@/components/dropdown";
 import { Separator } from "@/components/ui/separator";
 import { Task } from "@/types";
+import { rc } from "@/lib/utils";
 
 export default function AddTask({
   listDropdown,
@@ -47,35 +48,41 @@ export default function AddTask({
       </DialogTrigger>
       <DialogContent className="max-w-screen-md px-0">
         <DialogHeader className="px-6">
-          <DialogTitle>Add Task {listId}</DialogTitle>
+          <DialogTitle>
+            <span className={`text-2xl ${rc("bg", "A")} px-1`}>Add Task</span>
+          </DialogTitle>
         </DialogHeader>
         <Separator />
         <div className="grid p-6 bg-gray-100 h-auto -my-4">
           <input
             placeholder="Untitled"
             value={taskName}
-            onChange={(e) => setTaskName(e.target.value)} // Capture task name
-            className="bg-transparent text-2xl font-semibold focus-within:outline-none mb-2"
+            onChange={(e) => setTaskName(e.target.value)}
+            className="bg-transparent text-3xl font-semibold focus-within:outline-none mb-2"
           />
           <textarea
             rows={8}
             placeholder="Add a short description..."
             value={description}
-            onChange={(e) => setDescription(e.target.value)} // Capture description
-            className="bg-transparent text-md focus-within:outline-none text-gray-700 resize-none"
+            onChange={(e) => setDescription(e.target.value)}
+            className="bg-transparent text-xl focus-within:outline-none text-gray-700 resize-none"
           />
           <div>
             <Dropdown
               items={listDropdown}
               defaultValue={listId}
-              onChange={setSelectedList} // Update selected list
+              onChange={setSelectedList}
             />
           </div>
         </div>
         <Separator />
         <DialogFooter className="px-6">
           <DialogClose asChild>
-            <Button type="button" onClick={handleSave}>
+            <Button
+              type="button"
+              className={rc("bg", "s")}
+              onClick={handleSave}
+            >
               Save Task
             </Button>
           </DialogClose>

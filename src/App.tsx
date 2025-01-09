@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import List from "@/components/list";
 import Sidenav from "./components/sidenav";
+import { TASK } from "./constant";
 
 export default function App() {
   type Task = {
@@ -20,40 +21,9 @@ export default function App() {
   };
 
   const [listDropdownItem, setListDropdownItem] = useState<string[]>([]);
-  const [lists, setLists] = useState<ListType[]>([
-    {
-      name: "Todo",
-      id: "to_do",
-      tasks: [
-        {
-          name: "First task",
-          listId: "to_do",
-          id: "todo_task",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis facilis perspiciatis saepe doloremque error, maiores autem laborum eveniet provident non aperiam repudiandae, vel consequatur commodi quae similique? Sed, eaque labore.",
-          title: "Hello",
-          assignees: ["Shubham", "mrinal", "Archit"],
-        },
-      ],
-    },
-    {
-      name: "In Progress",
-      id: "in_progress",
-      tasks: [
-        {
-          name: "last task",
-          listId: "in_progress",
-          id: "first_task",
-          description: "anything",
-          title: "title",
-          assignees: ["Shubham"],
-        },
-      ],
-    },
-  ]);
+  const [lists, setLists] = useState<ListType[]>(TASK);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  // const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
   useEffect(() => {
     setListDropdownItem(lists.map((list) => list.id));
@@ -103,7 +73,7 @@ export default function App() {
     );
   };
   return (
-    <div className="h-dvh w-full flex  bg-gradient-to-bl from-gray-50 to-gray-200 via-gray-50">
+    <div className="h-dvh w-full flex  bg-gradient-to-bl from-white to-gray-200 via-white">
       <Sidenav></Sidenav>
       <DragDropContext onDragEnd={handleDragEnd}>
         <div className="size-full flex gap-x-2 overflow-x-scroll p-10">
@@ -114,7 +84,7 @@ export default function App() {
               name={list.name}
               tasks={list.tasks}
               listDropdown={listDropdownItem}
-              onTaskClick={setSelectedTask}
+              // onTaskClick={setSelectedTask}
               onAddOrUpdateTask={handleAddTask}
             />
           ))}
