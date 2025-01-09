@@ -28,7 +28,7 @@ export const rc = (type: "text" | "bg", letter: string): string => {
     r: "rose-500",
     s: "blue-500",
     t: "rose-500",
-    u: "cyan-500",
+    u: "yellow-500",
     v: "fuchsia-500",
     w: "yellow-500",
     x: "pink-500",

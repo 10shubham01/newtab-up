@@ -1,23 +1,28 @@
 import { Droppable } from "react-beautiful-dnd";
-import AddTask from "@/components/addtask";
 import Task from "@/components/task";
-import { Task as TaskType } from "@/types";
+import { Button } from "@/components/ui/button";
 import { rc } from "@/lib/utils";
-
+type Task = {
+  name: string;
+  listId: string;
+  description: string;
+  title: string;
+  assignees: string[];
+  id: string;
+};
 export default function List({
   id,
   name,
   tasks,
-  listDropdown,
-  // onTaskClick,
-  onAddOrUpdateTask,
+  onTaskClick,
+  onAdd,
 }: {
   id: string;
   name: string;
-  tasks: TaskType[];
+  tasks: Task[];
   listDropdown: string[];
-  onTaskClick?: (task: TaskType) => void;
-  onAddOrUpdateTask: (task: TaskType) => void;
+  onTaskClick: (task: Task) => void;
+  onAdd: () => void;
 }) {
   return (
     <Droppable droppableId={id}>
@@ -31,13 +36,11 @@ export default function List({
         >
           <div className="w-full flex items-center p-4 justify-between">
             <h1 className={`text-lg text-gray-800 ${rc("bg", name.charAt(0))}`}>
-              {name + ` (${tasks.length})`}
+              {name}
             </h1>
-            <AddTask
-              listDropdown={listDropdown}
-              listId={id}
-              onSubmit={onAddOrUpdateTask}
-            />
+            <Button className="text-sm" size="sm" onClick={onAdd}>
+              +
+            </Button>
           </div>
           {tasks.map((task, index) => (
             <Task
@@ -48,7 +51,7 @@ export default function List({
               title={task.title}
               description={task.description}
               assignees={task.assignees}
-              // onClick={() => onTaskClick(task)}
+              onClick={() => onTaskClick(task)}
             />
           ))}
           {provided.placeholder}

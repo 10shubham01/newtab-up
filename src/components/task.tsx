@@ -17,7 +17,7 @@ export default function Task({
   description: string;
   title: string;
   assignees: string[];
-  onClick?: () => void;
+  onClick: () => void;
 }) {
   return (
     <Draggable draggableId={id} index={index} key={id}>
