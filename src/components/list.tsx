@@ -7,7 +7,7 @@ type Task = {
   listId: string;
   description: string;
   title: string;
-  assignees: string[];
+  tags: string[];
   id: string;
 };
 export default function List({
@@ -50,7 +50,7 @@ export default function List({
               name={task.name}
               title={task.title}
               description={task.description}
-              assignees={task.assignees}
+              tags={task.tags}
               onClick={() => onTaskClick(task)}
             />
           ))}

@@ -13,21 +13,16 @@ const AvatarCircles = ({
   avatars,
 }: AvatarCirclesProps) => {
   return (
-    <div
-      className={cn(
-        "z-10 flex -space-x-2 hover:space-x-0 rtl:space-x-reverse transition-all",
-        className
-      )}
-    >
+    <div className={cn("z-10 flex rtl:space-x-reverse", className)}>
       {avatars.map((avatar, index) => (
         <div
-          className={`flex h-6 w-6 items-center justify-center text-center rounded-full border-2 border-black  text-uppercase text-2xl ${rc(
+          className={`flex items-center justify-center text-center border-2 border-black text-sm mx-1 px-1 ${rc(
             "bg",
             avatar.charAt(0)
           )}`}
           key={index}
         >
-          {avatar.charAt(0)}
+          {avatar}
         </div>
       ))}
       {(numPeople ?? 0) > 0 && (

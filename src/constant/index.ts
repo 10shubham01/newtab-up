@@ -10,7 +10,7 @@ export const TASK = [
         description:
           "Initialize the GitHub repository for the project. Add a README and set up initial branch structure.",
         title: "Project Repository Setup",
-        assignees: ["Shubham"],
+        tags: ["setup", "enhancement","Urgent"],
       },
       {
         name: "Research task management libraries",
@@ -19,7 +19,7 @@ export const TASK = [
         description:
           "Evaluate libraries like React DnD, react-beautiful-dnd, and others for implementing drag-and-drop functionality.",
         title: "Library Research",
-        assignees: ["Archit", "Mrinal"],
+        tags: ["research"],
       },
       {
         name: "Design wireframe for task board",
@@ -28,7 +28,7 @@ export const TASK = [
         description:
           "Design the wireframe for the task board layout, including task cards, drag-and-drop areas, and filters.",
         title: "Wireframe Design",
-        assignees: ["Shubham", "Mrinal"],
+        tags: ["UI", "design"],
       },
       {
         name: "Review task board requirements",
@@ -37,7 +37,7 @@ export const TASK = [
         description:
           "Review project requirements and user stories for task management features, prioritizing MVP tasks.",
         title: "Requirements Review",
-        assignees: ["Archit"],
+        tags: ["critical"],
       },
     ],
   },
@@ -50,9 +50,9 @@ export const TASK = [
         listId: "to_do",
         id: "task_5",
         description:
-          "Design and implement a reusable card component to display individual tasks. Include title, assignees, and description preview.",
+          "Design and implement a reusable card component to display individual tasks. Include title, tags, and description preview.",
         title: "Task Card Component",
-        assignees: ["Shubham", "Mrinal"],
+        tags: ["UI", "component"],
       },
       {
         name: "Setup Tailwind CSS",
@@ -61,7 +61,7 @@ export const TASK = [
         description:
           "Integrate Tailwind CSS into the project for rapid and consistent UI development.",
         title: "Tailwind Setup",
-        assignees: ["Archit"],
+        tags: ["setup", "UI"],
       },
       {
         name: "Setup initial routing",
@@ -70,7 +70,7 @@ export const TASK = [
         description:
           "Configure React Router for basic routing of task boards, task detail pages, and user profiles.",
         title: "Routing Setup",
-        assignees: ["Shubham"],
+        tags: ["setup", "enhancement"],
       },
       {
         name: "Create reusable button component",
@@ -79,7 +79,7 @@ export const TASK = [
         description:
           "Build a reusable button component using Tailwind CSS. It should support various states (hover, active, disabled).",
         title: "Button Component",
-        assignees: ["Mrinal"],
+        tags: ["UI", "component"],
       },
     ],
   },
@@ -94,7 +94,7 @@ export const TASK = [
         description:
           "Use React DnD to allow tasks to be dragged between lists. Ensure smooth animations and state updates.",
         title: "Drag and Drop",
-        assignees: ["Shubham"],
+        tags: ["UI", "feature"],
       },
       {
         name: "Develop list components",
@@ -103,7 +103,7 @@ export const TASK = [
         description:
           "Create a component for task lists that supports adding, editing, and deleting tasks.",
         title: "List Component",
-        assignees: ["Mrinal"],
+        tags: ["UI", "component"],
       },
       {
         name: "Implement task filtering",
@@ -112,7 +112,7 @@ export const TASK = [
         description:
           "Add filtering functionality to sort tasks by priority, due date, or assignee.",
         title: "Task Filtering",
-        assignees: ["Archit"],
+        tags: ["feature", "enhancement"],
       },
     ],
   },
@@ -127,7 +127,7 @@ export const TASK = [
         description:
           "Review the code for the task card component for consistency, performance, and adherence to coding standards.",
         title: "Task Card Review",
-        assignees: ["Archit", "Shubham"],
+        tags: ["code review"],
       },
       {
         name: "Review drag-and-drop implementation",
@@ -136,7 +136,7 @@ export const TASK = [
         description:
           "Ensure the drag-and-drop functionality is bug-free and has smooth animations.",
         title: "Drag and Drop Review",
-        assignees: ["Mrinal"],
+        tags: ["bug", "UI"],
       },
     ],
   },
@@ -151,7 +151,7 @@ export const TASK = [
         description:
           "Configured the project with TypeScript, React, and Tailwind CSS. Verified that the initial setup works as expected.",
         title: "Project Setup Complete",
-        assignees: ["Shubham", "Archit"],
+        tags: ["setup"],
       },
       {
         name: "Install project dependencies",
@@ -160,7 +160,7 @@ export const TASK = [
         description:
           "Installed the necessary dependencies including React, React DOM, TypeScript, Tailwind CSS, and React Router.",
         title: "Dependencies Installed",
-        assignees: ["Mrinal"],
+        tags: ["setup"],
       },
       {
         name: "Initial deployment to Vercel",
@@ -169,7 +169,7 @@ export const TASK = [
         description:
           "Deployed the project to Vercel for preview and testing. Set up basic build and deploy configurations.",
         title: "Vercel Deployment",
-        assignees: ["Shubham"],
+        tags: ["deployment"],
       },
     ],
   },

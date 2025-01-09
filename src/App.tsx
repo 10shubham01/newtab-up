@@ -11,7 +11,7 @@ export default function App() {
     listId: string;
     description: string;
     title: string;
-    assignees: string[];
+    tags: string[];
     id: string;
   };
 

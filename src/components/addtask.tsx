@@ -50,7 +50,7 @@ export default function AddTask({
       description,
       title: taskName,
       listId: selectedList,
-      assignees: task?.assignees || [], // Default to an empty assignees list if not provided
+      tags: task?.tags || [], // Default to an empty tags list if not provided
     };
 
     onSubmit(newTask);

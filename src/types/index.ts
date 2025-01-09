@@ -5,7 +5,7 @@ export type Task = {
   listId: string; // ID of the list the task belongs to
   description: string; // Detailed description of the task
   title: string; // Short title of the task
-  assignees: string[]; // List of people assigned to the task
+  tags: string[]; // List of people assigned to the task
 };
 
 // List type
